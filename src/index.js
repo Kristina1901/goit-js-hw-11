@@ -5,6 +5,7 @@ import articlesTpl from './templates/articles.hbs'
 const formEl = document.querySelector(".search-form")
 const input = document.querySelector('input')
 const show = document.querySelector(".load-more")
+show.classList.add("is-hidden")
 const container = document.querySelector(".gallery")
 const newsApiService = new NewApiService();
 formEl.addEventListener('submit', onSearch)    
@@ -14,14 +15,18 @@ function onSearch(e) {
     newsApiService.query = input.value
     newsApiService.resetPage()
     newsApiService.fetchArticles().then(appendArtticleMarkup)
-   }
+    }
 show.addEventListener('click', onLoadMore)
 function onLoadMore() {
+  show.classList.add("is-hidden")
   newsApiService.fetchArticles().then(appendArtticleMarkup)
-}
+ }
 function appendArtticleMarkup(data) {
-    container.insertAdjacentHTML('beforeend', articlesTpl
-        (data));
+  container.insertAdjacentHTML('beforeend', articlesTpl
+    (data)
+  );
+  show.classList.remove("is-hidden")
+  
 }
 function clearArticlesContainer() {
   container.innerHTML = ''
