@@ -27,7 +27,8 @@ button {
   display: none;
 }
 .container {
-  background-color: #9586f1;
+  background-color: #c73e1d;
+  background-image: linear-gradient(315deg, #c73e1d 0%, #a23b72 37%, #2e86ab 100%);
   height: 56px;
   display: flex;
   align-items: center;
