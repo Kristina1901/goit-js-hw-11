@@ -16,9 +16,12 @@ body {
   color: #212121;
   line-height: 1.5;
   margin: 0;
+  background-color: #91d370;
+  background-image: linear-gradient(319deg, #91d370 0%, #bca0ff 37%, #f2cd54 100%);
 }
 button {
   padding: 8px;
+  cursor: pointer;
 }
 .is-hidden {
   display: none;
@@ -80,6 +83,8 @@ button {
 .photo-card {
   width: calc(100% / 4 - 5px);
   margin-right: 5px;
+  margin-bottom: 5px;
+  border: 2px outset #7b68ee;
 }
 img {
   width: 100%;
