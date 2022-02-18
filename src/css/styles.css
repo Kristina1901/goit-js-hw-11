@@ -20,11 +20,6 @@ body {
 button {
   padding: 8px;
 }
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
 .is-hidden {
   display: none;
 }
@@ -85,4 +80,9 @@ img {
 .photo-card {
   width: calc(100% / 4 - 5px);
   margin-right: 5px;
+}
+img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 320/213;
 }
