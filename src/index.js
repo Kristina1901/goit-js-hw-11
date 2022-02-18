@@ -17,14 +17,13 @@ function onSearch(e) {
     }
 show.addEventListener('click', onLoadMore)
 function onLoadMore() {
-  show.classList.add("is-hidden")
   newsApiService.fetchArticles().then(appendArtticleMarkup)
  }
 function appendArtticleMarkup(data) {
   container.insertAdjacentHTML('beforeend', articlesTpl
     (data)
   );
-  if (data.length === 0) {
+  if (data.length === 0 && data.totalHits === 0 ) {
     show.classList.add("is-hidden")
   }
   else {
