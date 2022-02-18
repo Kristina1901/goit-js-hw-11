@@ -1,7 +1,6 @@
 import './css/styles.css';
 import NewApiService from './news-service'
 import articlesTpl from './templates/articles.hbs'
-
 const formEl = document.querySelector(".search-form")
 const input = document.querySelector('input')
 const show = document.querySelector(".load-more")
@@ -25,8 +24,12 @@ function appendArtticleMarkup(data) {
   container.insertAdjacentHTML('beforeend', articlesTpl
     (data)
   );
-  show.classList.remove("is-hidden")
-  
+  if (data.length === 0) {
+    show.classList.add("is-hidden")
+  }
+  else {
+    show.classList.remove("is-hidden")
+  }
 }
 function clearArticlesContainer() {
   container.innerHTML = ''

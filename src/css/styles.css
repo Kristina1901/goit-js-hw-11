@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  border: 0;
 }
 
 body {
@@ -12,12 +13,16 @@ body {
   line-height: 1.5;
   margin: 0;
 }
+button {
+  padding: 8px;
+}
 
 #search-box {
   font: inherit;
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  text-align: center;
 }
 .is-hidden {
   display: none;
@@ -64,7 +69,7 @@ body {
   margin-bottom: 10px;
   background-color: #9586f1;
   border: none;
-  padding: 6px;
+  padding: 8px;
   font: inherit;
   font-size: 14px;
   color: #fafafa;
@@ -76,4 +81,8 @@ body {
 .load-more:active {
   background-color: #7b68ee;
   cursor: pointer;
+}
+.some {
+  display: flex;
+  flex-direction: row;
 }

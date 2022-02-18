@@ -14,6 +14,7 @@ export default class NewsApiService{
            
             if (allhits === 0) {
                 return Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+                
             }
             if (data.length !== 0) {
                 this.incrementPage()
