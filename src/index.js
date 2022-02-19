@@ -38,13 +38,13 @@ function clearArticlesContainer() {
 }
 function cheakingImg({ total, totalHits } = data) {
    
-  if (totalHits === 0) {
+  if (total === 0) {
     show.classList.add("is-hidden")
     return Notify.failure('Sorry, there are no images matching your search query. Please try again.');
               
                        
   }
-  if (total === 0) {
+  if (totalHits === 0) {
     show.classList.add("is-hidden")
     return Notify.info("We're sorry, but you've reached the end of search results.");
     
@@ -53,7 +53,7 @@ function cheakingImg({ total, totalHits } = data) {
     show.classList.add("is-hidden")
  
   }
-  if (totalHits > 40) {
+  if (total > 40) {
     show.classList.remove("is-hidden")
   }
 }
