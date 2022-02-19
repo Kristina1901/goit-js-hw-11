@@ -1,5 +1,6 @@
 const axios = require('axios');
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 export default class NewsApiService{
     constructor() {
         this.searchQuery = '';
@@ -12,18 +13,19 @@ export default class NewsApiService{
             const data = response.data.hits
             const allhits = response.data.totalHits 
            
-            if (allhits === 0) {
-                return Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-                
+          if (allhits  === 0) {
+              return Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+              
+                       
             }
-            if (data.length !== 0) {
+            if (data !== 0) {
                 this.incrementPage()
                 return data
+               
             }
-             if (data.length === 0) {
+             if (data === 0) {
                 return Notify.info("We're sorry, but you've reached the end of search results.");
-            }
-            
+            }   
         }
     catch (error) {
      console.log(error.message);

@@ -51,7 +51,6 @@ button {
 .info-item {
   margin-right: 10px;
   flex-wrap: wrap;
-  font: inherit;
   font-size: 14px;
   text-align: center;
 }
@@ -95,4 +94,19 @@ img {
 }
 input {
   padding: 10px;
+}
+@media (min-width: 700px) and (max-width: 1030px) {
+  .info-item {
+    margin-right: 4px;
+    font-size: 8px;
+  }
+}
+@media (min-width: 320px) and (max-width: 650px) {
+  .info-item {
+    margin-right: 2px;
+    font-size: 5px;
+  }
+  .info {
+    flex-wrap: wrap;
+  }
 }
