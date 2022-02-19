@@ -1,5 +1,5 @@
 const axios = require('axios');
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 export default class NewsApiService{
     constructor() {
@@ -10,22 +10,10 @@ export default class NewsApiService{
     async fetchArticles() {
         try {
             const response = await axios.get(`https://pixabay.com/api/?key=25742828-fa226770f9336c5f983da529f&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch&per_page=40&page=${this.page}`)
-            const data = response.data.hits
-            const allhits = response.data.totalHits 
-           
-          if (allhits  === 0) {
-              return Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-              
-                       
-            }
-            if (data !== 0) {
-                this.incrementPage()
-                return data
-               
-            }
-             if (data === 0) {
-                return Notify.info("We're sorry, but you've reached the end of search results.");
-            }   
+            const data = response.data
+            this.incrementPage()
+            return data
+                                     
         }
     catch (error) {
      console.log(error.message);
