@@ -6,6 +6,7 @@ import  SimpleLightbox  from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 
+
 const formEl = document.querySelector(".search-form")
 const input = document.querySelector('input')
 const show = document.querySelector(".load-more")
@@ -21,9 +22,8 @@ function onSearch(e) {
     } 
     newsApiService.query = input.value
     newsApiService.resetPage()
-    newsApiService.fetchArticles()
     newsApiService.fetchArticles().then(appendArtticleMarkup)
-    newsApiService.fetchArticles().then(cheakingImg)
+   
   
         
 }
@@ -41,18 +41,12 @@ function onLoadMore() {
   });
 }
 
-function appendArtticleMarkup({ hits } = data) {
+function appendArtticleMarkup({ hits, totalHits } = data) {
   container.insertAdjacentHTML('beforeend', articlesTpl
     (hits));
   let lightbox = new SimpleLightbox('.gallery a', { scrollZoom: false, captionDelay: 250, captionsData: 'alt', doubleTapZoom: 2, disableScroll:false});
   lightbox.refresh()
-    
-}
-function clearArticlesContainer() {
-  container.innerHTML = ''
-}
-function cheakingImg({ totalHits } = data) {
-   if (totalHits === 0) {
+  if (totalHits === 0) {
    show.classList.add("is-hidden")
    Notify.failure('Sorry, there are no images matching your search query. Please try again.');
                            
@@ -73,12 +67,10 @@ function cheakingImg({ totalHits } = data) {
   }
      
 }
+function clearArticlesContainer() {
+  container.innerHTML = ''
+}
 
-// let elem = document.querySelector(container);
-// let infScroll = new InfiniteScroll( elem, {
-//   // options
-//   path: data.hits,
-//   append: articlesTpl(hits),
-//   oullayer:  newsApiService
-// });
+
+
 
