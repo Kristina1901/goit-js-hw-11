@@ -38,7 +38,9 @@ function onLoadMore() {
       show.classList.add('is-hidden');
       Notify.warning("We're sorry, but you've reached the end of search results.");
     }
+   
   });
+  
 }
 
 function appendArtticleMarkup({ hits, totalHits } = data) {
@@ -46,7 +48,9 @@ function appendArtticleMarkup({ hits, totalHits } = data) {
     (hits));
   let lightbox = new SimpleLightbox('.gallery a', { scrollZoom: false, captionDelay: 250, captionsData: 'alt', doubleTapZoom: 2, disableScroll:false});
   lightbox.refresh()
-  if (totalHits === 0) {
+       
+       
+    if (totalHits === 0) {
    show.classList.add("is-hidden")
    Notify.failure('Sorry, there are no images matching your search query. Please try again.');
                            
@@ -54,17 +58,14 @@ function appendArtticleMarkup({ hits, totalHits } = data) {
   
    else if (totalHits <= 40) {
      show.classList.add("is-hidden")
-     Notify.info(`Hooray! We found ${totalHits} images.`)
+    
  
   }
   else if (totalHits > 40) {
      show.classList.remove("is-hidden")
-     Notify.info(`Hooray! We found ${totalHits} images.`)
   }
-  else  {
-    Notify.info(`Hooray! We found ${totalHits} images.`);
-     
-  }
+  
+   
      
 }
 function clearArticlesContainer() {
