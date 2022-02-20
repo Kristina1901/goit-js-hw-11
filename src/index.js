@@ -16,7 +16,7 @@ function onSearch(e) {
   e.preventDefault();
   clearArticlesContainer()
   if (input.value === '') {
-    return Notify.failure("Please enter your request");
+    return Notify.warning("Please enter your request");
     } 
     newsApiService.query = input.value
     newsApiService.resetPage()
@@ -31,9 +31,9 @@ show.addEventListener('click', onLoadMore)
 
 
 function onLoadMore() {
-  newsApiService.fetchArticles().then(response => {
-   appendArtticleMarkup(response);
-    if (response.hits.length < 40) {
+  newsApiService.fetchArticles().then(data => {
+   appendArtticleMarkup(data);
+    if (data.hits.length < 40) {
       show.classList.add('is-hidden');
       Notify.warning("We're sorry, but you've reached the end of search results.");
 
