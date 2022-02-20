@@ -46,7 +46,6 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, #d299c2, #fef9d7);
 }
 .info-item {
   margin-right: 10px;
@@ -103,13 +102,13 @@ input {
     margin-bottom: 5px;
     border: 2px outset #7b68ee;
   }
-  @media (min-width: 320px) and (max-width: 650px) {
-    .photo-card {
-      width: calc(100% / 1 - 5px);
-      margin-right: 5px;
-      margin-bottom: 5px;
-      border: 2px outset #7b68ee;
-    }
+}
+@media (min-width: 320px) and (max-width: 650px) {
+  .photo-card {
+    width: calc(100% / 1 - 5px);
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 2px outset #7b68ee;
   }
 }
 .photo-card:hover {
