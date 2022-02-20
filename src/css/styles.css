@@ -46,6 +46,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(45deg, #fddb92, #d1fdff);
 }
 .info-item {
   margin-right: 10px;
