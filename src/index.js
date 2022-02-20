@@ -22,10 +22,25 @@ function onSearch(e) {
     } 
     newsApiService.query = input.value
     newsApiService.resetPage()
-    newsApiService.fetchArticles().then(appendArtticleMarkup)
-   
+    newsApiService.fetchArticles().then(data => {
+      appendArtticleMarkup(data)
+     if (data.totalHits === 0) {
+   show.classList.add("is-hidden")
+   Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+                           
+   }
   
-        
+   else if (data.totalHits <= 40) {
+     show.classList.add("is-hidden")
+    
+ 
+  }
+  else if (data.totalHits > 40) {
+      show.classList.remove("is-hidden")
+      Notify.info(`Hooray! We found ${data.totalHits} images.`);
+  }
+    })
+      
 }
       
 show.addEventListener('click', onLoadMore)
@@ -38,35 +53,16 @@ function onLoadMore() {
       show.classList.add('is-hidden');
       Notify.warning("We're sorry, but you've reached the end of search results.");
     }
-   
-  });
+   });
   
 }
 
-function appendArtticleMarkup({ hits, totalHits } = data) {
+function appendArtticleMarkup({ hits } = data) {
   container.insertAdjacentHTML('beforeend', articlesTpl
     (hits));
   let lightbox = new SimpleLightbox('.gallery a', { scrollZoom: false, captionDelay: 250, captionsData: 'alt', doubleTapZoom: 2, disableScroll:false});
   lightbox.refresh()
        
-       
-    if (totalHits === 0) {
-   show.classList.add("is-hidden")
-   Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-                           
-   }
-  
-   else if (totalHits <= 40) {
-     show.classList.add("is-hidden")
-    
- 
-  }
-  else if (totalHits > 40) {
-     show.classList.remove("is-hidden")
-  }
-  
-   
-     
 }
 function clearArticlesContainer() {
   container.innerHTML = ''
