@@ -5,6 +5,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import  SimpleLightbox  from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+
 const formEl = document.querySelector(".search-form")
 const input = document.querySelector('input')
 const show = document.querySelector(".load-more")
@@ -43,9 +44,9 @@ function onLoadMore() {
 function appendArtticleMarkup({ hits } = data) {
   container.insertAdjacentHTML('beforeend', articlesTpl
     (hits));
-  let lightbox = new SimpleLightbox('.gallery a', { scrollZoom: false, captionDelay: 250, captionsData: 'alt', doubleTapZoom: 1 });
+  let lightbox = new SimpleLightbox('.gallery a', { scrollZoom: false, captionDelay: 250, captionsData: 'alt', doubleTapZoom: 2, disableScroll:false});
   lightbox.refresh()
-  
+    
 }
 function clearArticlesContainer() {
   container.innerHTML = ''
@@ -72,4 +73,12 @@ function cheakingImg({ totalHits } = data) {
   }
      
 }
+
+// let elem = document.querySelector(container);
+// let infScroll = new InfiniteScroll( elem, {
+//   // options
+//   path: data.hits,
+//   append: articlesTpl(hits),
+//   oullayer:  newsApiService
+// });
 
