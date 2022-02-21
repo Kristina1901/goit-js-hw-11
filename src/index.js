@@ -31,7 +31,8 @@ function onSearch(e) {
    }
   
    else if (data.totalHits <= 40) {
-     show.classList.add("is-hidden")
+       show.classList.add("is-hidden")
+       Notify.info(`Hooray! We found ${data.totalHits} images.`);
     
  
   }
